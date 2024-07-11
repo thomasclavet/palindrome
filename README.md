@@ -18,8 +18,10 @@ make install
 
 ### Example
 ```
-make run PHRASE=" man, a plan, a canal – Panama"
+make run PHRASE="A man, a plan, a canal - Panama"
 ```
+Running this command will return the following message:  
+`__main__:INFO: A man, a plan, a canal - Panama is a palindrome: True`
 
 ### Running tests
 ```
