@@ -1,5 +1,5 @@
 import argparse
-import string
+import re
 import logging
 
 logger = logging.getLogger(__name__)
@@ -10,7 +10,7 @@ def is_palindrome(phrase: str) -> bool:
 	if not isinstance(phrase, str):
 		raise TypeError("Word must be a string")
 
-	phrase = phrase.translate(str.maketrans("", "", string.punctuation)).lower().replace(" ", "")
+	phrase = re.sub(r'[^a-zA-Z0-9]', '', phrase).lower()
 	return phrase == phrase[::-1]
 
 
