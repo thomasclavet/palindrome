@@ -12,7 +12,8 @@ def test_is_palindrome_when_word_is_not_a_palindrome(input, expected):
 	assert is_palindrome(input) == expected
 
 
-def test_is_palindrome_raises_when_word_is_not_a_string():
+@pytest.mark.parametrize("input,expected", [(342, "input must be a string"), (set(), "input must be a string")])
+def test_is_palindrome_raises_when_word_is_not_a_string(input, expected):
 	with pytest.raises(TypeError) as e:
-		is_palindrome(342)
-		assert str(e.value) == "input must be a string"
+		is_palindrome(input)
+		assert str(e.value) == expected

@@ -7,14 +7,11 @@ logging.basicConfig(format="%(name)s:%(levelname)s: %(message)s", level=logging.
 
 
 def is_palindrome(phrase: str) -> bool:
-	if isinstance(phrase, int):
+	if not isinstance(phrase, str):
 		raise TypeError("Word must be a string")
 
 	phrase = phrase.translate(str.maketrans("", "", string.punctuation)).lower().replace(" ", "")
-	if phrase == phrase[::-1]:
-		return True
-	else:
-		return False
+	return phrase == phrase[::-1]
 
 
 if __name__ == "__main__":
