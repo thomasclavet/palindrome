@@ -1,5 +1,5 @@
 import argparse
-import string
+import re
 import logging
 
 logger = logging.getLogger(__name__)
@@ -7,14 +7,11 @@ logging.basicConfig(format="%(name)s:%(levelname)s: %(message)s", level=logging.
 
 
 def is_palindrome(phrase: str) -> bool:
-	if isinstance(phrase, int):
+	if not isinstance(phrase, str):
 		raise TypeError("Word must be a string")
 
-	phrase = phrase.translate(str.maketrans("", "", string.punctuation)).lower().replace(" ", "")
-	if phrase == phrase[::-1]:
-		return True
-	else:
-		return False
+	phrase = re.sub(r'[^a-zA-Z0-9]', '', phrase).lower()
+	return phrase == phrase[::-1]
 
 
 if __name__ == "__main__":

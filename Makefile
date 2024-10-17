@@ -19,7 +19,7 @@ format: $(INSTALL_STAMP)
 
 .PHONY: test
 test: $(INSTALL_STAMP)
-	$(POETRY) run pytest -v tests/ 
+	PYTHONPATH="./" $(POETRY) run pytest -v tests/
 
 
 .PHONY: clean
